@@ -3,13 +3,19 @@
 import argparse
 import glob
 import os
-
 import pandas as pd
-
+import numpy as np
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 
 # define functions
+def split_data(df):
+    x, y = df[['Pregnancies', 'PlasmaGlucose', 'DiastolicBloodPressure', 'TricepsThickness', 'SerumInsulin', 'BMI',
+               'DiabetesPedigree', 'Age']].values, df['Diabetic'].values
+    return train_test_split(X, y, test_size=0.30, random_state=0)
+
+
 def main(args):
     # TO DO: enable autologging
 
